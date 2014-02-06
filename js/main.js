@@ -13,10 +13,10 @@ function showDiv ( which ) {
 $( function() {
     $( "#year" ).html( (new Date).getFullYear() );
     currentPage = "#home";
-    peakPage = "";
+    peakPage = ""
     $( "#main div" ).each( function() {
         if( $( this ).hasClass( "invisible" ) ) {
-            $( this ).load( $( this ).attr( "id" ) + ".html" );
+            $( this ).load( "html/" + $( this ).attr( "id" ) + ".html" );
         }
     });
 

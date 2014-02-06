@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include 'header.html' ?>
+    <?php include 'html/header.html' ?>
     <div id="main" class="content">
         <div id="home">
             <h1>Home</h1>
@@ -25,7 +25,7 @@
         <div id="upload" class="invisible"></div>
         <div id="run" class="invisible"></div>
     </div>
-    <?php include 'footer.html' ?>
+    <?php include 'html/footer.html' ?>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="js/main.js"></script>
 </body>
