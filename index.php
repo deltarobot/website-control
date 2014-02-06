@@ -22,6 +22,8 @@
             </div>
         </div>
         <div id="configure" class="invisible"></div>
+        <div id="upload" class="invisible"></div>
+        <div id="run" class="invisible"></div>
     </div>
     <?php include 'footer.html' ?>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

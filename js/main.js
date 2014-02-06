@@ -13,7 +13,11 @@ function showDiv ( which ) {
 $( function() {
     $( "#year" ).html( (new Date).getFullYear() );
     currentPage = "#home";
-    $( "#configure" ).load( "configure.html" );
+    $( "#main div" ).each( function() {
+        if( $( this ).hasClass( "invisible" ) ) {
+            $( this ).load( $( this ).attr( "id" ) + ".html" );
+        }
+    });
 
     $( "#header ul li a" ).click( function() {
         showDiv( $( this ).attr( "page" ) );
