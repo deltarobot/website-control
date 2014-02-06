@@ -1,4 +1,1 @@
-website-control
-===============
-
-For managing and keeping track of the CNC through a browser. 
+For managing and keeping track of the CNC through a browser.
