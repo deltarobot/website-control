@@ -13,6 +13,7 @@ function showDiv ( which ) {
 $( function() {
     $( "#year" ).html( (new Date).getFullYear() );
     currentPage = "#home";
+    peakPage = "";
     $( "#main div" ).each( function() {
         if( $( this ).hasClass( "invisible" ) ) {
             $( this ).load( $( this ).attr( "id" ) + ".html" );
@@ -23,9 +24,12 @@ $( function() {
         showDiv( $( this ).attr( "page" ) );
     });
     $( "#header ul li a" ).hover( function() {
-        transition( currentPage, $( this ).attr( "page" ) );
-    }, function() {
-        transition( $( this ).attr( "page" ), currentPage );
+        transition( peakPage, currentPage );
+        peakPage = $( this ).attr( "page" );
+        transition( currentPage, peakPage );
+    }, function() {});
+    $( "#header ul" ).hover( function() {}, function() {
+        transition( peakPage, currentPage );
     });
 });
 
