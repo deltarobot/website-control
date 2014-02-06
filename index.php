@@ -13,17 +13,18 @@
 
 <body>
     <?php include 'header.html' ?>
-    <div class="content smoothColor">
-        <h1>Home</h1>
-        <div class="content">
-            <h2>Some sub-header</h2>
-            <p id="ipsum"></p>
+    <div id="main" class="content">
+        <div id="home">
+            <h1>Home</h1>
+            <div class="content">
+                <h2>Some sub-header</h2>
+                <p class="ipsum"></p>
+            </div>
         </div>
-        <div id="sidebar"></div>
+        <div id="configure"></div>
     </div>
     <?php include 'footer.html' ?>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="http://sanderkorvemaker.nl/jquery/js/jquery.lorem.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
