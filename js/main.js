@@ -1,29 +1,27 @@
-function peakDiv ( which ) {
-    var pages = [ "home", "configure" ];
-
-    for( var i in pages ) {
-        if( pages[i] != which ) {
-            $( "#" + pages[i] ).addClass( "invisible" );
-        } else {
-            $( "#" + pages[i] ).removeClass( "invisible" );
-        }
+function transition ( oldPage, newPage ) {
+    if( oldPage != newPage ) {
+        $( oldPage ).addClass( "invisible" );
+        $( newPage ).removeClass( "invisible" );
     }
 }
 
 function showDiv ( which ) {
+    transition( currentPage, which );
     currentPage = which;
-    peakDiv( which );
 }
 
 $( function() {
     $( "#year" ).html( (new Date).getFullYear() );
-    showDiv( "home" );
+    currentPage = "#home";
     $( "#configure" ).load( "configure.html" );
 
+    $( "#header ul li a" ).click( function() {
+        showDiv( $( this ).attr( "page" ) );
+    });
     $( "#header ul li a" ).hover( function() {
-        peakDiv( $( this ).attr( "page" ) );
+        transition( currentPage, $( this ).attr( "page" ) );
     }, function() {
-        peakDiv( currentPage );
+        transition( $( this ).attr( "page" ), currentPage );
     });
 });
 
