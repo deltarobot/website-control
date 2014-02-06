@@ -18,10 +18,10 @@
             <h1>Home</h1>
             <div class="content">
                 <h2>Some sub-header</h2>
-                <p class="ipsum"></p>
+                <p></p>
             </div>
         </div>
-        <div id="configure"></div>
+        <div id="configure" class="invisible"></div>
     </div>
     <?php include 'footer.html' ?>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

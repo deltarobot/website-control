@@ -1,5 +1,6 @@
-function showDiv ( which ) {
+function peakDiv ( which ) {
     var pages = [ "home", "configure" ];
+
     for( var i in pages ) {
         if( pages[i] != which ) {
             $( "#" + pages[i] ).addClass( "invisible" );
@@ -9,9 +10,20 @@ function showDiv ( which ) {
     }
 }
 
+function showDiv ( which ) {
+    currentPage = which;
+    peakDiv( which );
+}
+
 $( function() {
     $( "#year" ).html( (new Date).getFullYear() );
     showDiv( "home" );
     $( "#configure" ).load( "configure.html" );
+
+    $( "#header ul li a" ).hover( function() {
+        peakDiv( $( this ).attr( "page" ) );
+    }, function() {
+        peakDiv( currentPage );
+    });
 });
 
