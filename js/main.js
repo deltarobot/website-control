@@ -22,6 +22,8 @@ $( function() {
 
     $( "#header ul li a" ).click( function() {
         showDiv( $( this ).attr( "page" ) );
+        $( "#header ul li a" ).removeClass( "selectedMenu colorFlash" );
+        $( this ).addClass( "colorFlash selectedMenu" );
     });
     $( "#header ul li a" ).hover( function() {
         transition( peakPage, currentPage );

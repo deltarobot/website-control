@@ -58,7 +58,6 @@ h1, h2 {
 .menu li a, .menu li a {
     display: block;
     border-radius: 10px;
-    color: #fff;
     font-size: large;
     text-decoration: none;
     margin: 0 5px 0 5px;
@@ -68,6 +67,24 @@ h1, h2 {
 .menu li a:hover {
     background-color: #fff;
     color: #409999;
+}
+
+.selectedMenu {
+    background-color: #ddd;
+    color: #409999;
+}
+
+@keyframes colorFlash {
+    10% { background-color: #407799; }
+    100% { background-color: #fff; }
+}
+@-webkit-keyframes colorFlash {
+    10% { background-color: #407799; }
+    100% { background-color: #fff; }
+}
+.colorFlash {
+    animation: colorFlash 500ms;
+    -webkit-animation: colorFlash 500ms;
 }
 
 .smoothColor {
