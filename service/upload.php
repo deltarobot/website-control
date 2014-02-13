@@ -20,6 +20,6 @@
     if( move_uploaded_file( $file['tmp_name'], $targetFile ) ) {
         echo '<span class="success">' . $filename . ' has been uploaded</span>';
     } else {
-        sendError( 'Could not upload file...' );
+        sendError( 'Could not upload file' );
     }
 ?>

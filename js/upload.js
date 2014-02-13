@@ -1,9 +1,9 @@
 function uploadUpdate() {
-    $( "#fileList" ).load( "/service/fileList.php" );
+    $( "#fileList tbody").load( "/service/fileList.php" );
 }
 
 function uploadComplete ( data, textStatus, errorThrown ) {
-    var uplaodResponse;
+    var uploadResponse;
     if( textStatus == "success" ) {
         uploadResponse = data;
     } else {

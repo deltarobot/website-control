@@ -84,6 +84,19 @@ h1, h2 {
     color: red;
 }
 
+#fileList {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-spacing: 0px;
+}
+
+#fileList th, #fileList td {
+    border-style: dotted;
+    border-width: 1px;
+    padding: 3px;
+}
+
 @keyframes colorFlash {
     10% { background-color: #407799; }
     100% { background-color: #fff; }
