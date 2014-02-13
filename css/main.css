@@ -1,0 +1,94 @@
+body {
+    width: 960px;
+    margin: 0 auto;
+    background-color: #ddd;
+    font-family: sans-serif;
+}
+
+div {
+    border-radius: 10px;
+}
+
+h1, h2 {
+    clear: both;
+    margin: 0;
+}
+
+.content {
+    border-style: solid;
+    border-color: #409999;
+    margin: 10px 0 10px 0;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.centered {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.invisible {
+    display: none;
+}
+
+.small {
+    font-size: small;
+}
+
+.header {
+    background-color: #409999;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.menu {
+    display: table;
+    width: 100%;
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+.menu li {
+    width: 20%;
+    display: table-cell;
+    text-align: center;
+}
+
+.menu li a, .menu li a {
+    display: block;
+    border-radius: 10px;
+    font-size: large;
+    text-decoration: none;
+    margin: 0 5px 0 5px;
+    padding: 3px;
+}
+
+.menu li a:hover {
+    background-color: #fff;
+    color: #409999;
+}
+
+.selectedMenu {
+    background-color: #ddd;
+    color: #409999;
+}
+
+@keyframes colorFlash {
+    10% { background-color: #407799; }
+    100% { background-color: #fff; }
+}
+@-webkit-keyframes colorFlash {
+    10% { background-color: #407799; }
+    100% { background-color: #fff; }
+}
+.colorFlash {
+    animation: colorFlash 500ms;
+    -webkit-animation: colorFlash 500ms;
+}
+
+.smoothColor {
+    transition: background-color 500ms, color 500ms;
+    -webkit-transition: background-color 500ms, color 500ms;
+}
+
