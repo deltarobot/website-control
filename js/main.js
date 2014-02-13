@@ -18,27 +18,19 @@ function loadAllPages () {
     loadedPages = 0;
     totalPages = loadDivs.size();
     loadDivs.each( function() {
-        $( this ).load( "html/" + $( this ).attr( "id" ) + ".html", afterLoad );
+        var thisId = $( this ).attr( "id" );
+        $( this ).load( "html/" + thisId + ".html", function () {
+            afterLoad( thisId );
+        });
     });
 }
 
-function afterLoad () {
+function afterLoad ( loaded ) {
     loadedPages++;
+    window[ loaded + 'Update' ]();
     if( loadedPages == totalPages ) {
-        ajaxForm( $( "#uploadForm" ), uploadComplete );
+        $( "#uploadForm" ).ajaxForm( uploadComplete );
     }
-}
-
-function ajaxForm ( form, responseHandler ) {
-    form.submit( function ( ev ) {
-        $.ajax({
-            url: form.attr( "action" ),
-            type: form.attr( "method" ),
-            data: form.serialize()
-        }).always( responseHandler );
-
-        ev.preventDefault();
-    });
 }
 
 function setupLinkListeners () {
