@@ -74,6 +74,16 @@ h1, h2 {
     color: #409999;
 }
 
+.success {
+    font-weight: bold;
+    color: green;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+}
+
 @keyframes colorFlash {
     10% { background-color: #407799; }
     100% { background-color: #fff; }
