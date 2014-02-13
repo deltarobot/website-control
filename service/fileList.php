@@ -1,4 +1,7 @@
 <?php
-    $output = shell_exec( 'ls -l --time-style=long-iso ../upload' );
+    require 'commonUtils.php';
+    $uploadPath = getUploadPath();
+
+    $output = shell_exec( "ls -lt --time-style=long-iso $uploadPath" );
     echo "<pre>$output</pre>";
 ?>
