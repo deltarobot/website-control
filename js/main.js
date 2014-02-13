@@ -1,7 +1,8 @@
 function transition ( oldPage, newPage ) {
     if( oldPage != newPage ) {
-        $( oldPage ).addClass( "invisible" );
-        $( newPage ).removeClass( "invisible" );
+        window[ newPage + 'Update' ]();
+        $( '#' + oldPage ).addClass( "invisible" );
+        $( '#' + newPage ).removeClass( "invisible" );
     }
 }
 
@@ -11,7 +12,7 @@ function showDiv ( which ) {
 }
 
 function loadAllPages () {
-    currentPage = "#home";
+    currentPage = "home";
     peakPage = ""
     var loadDivs = $( "#main div" ).filter( ".invisible" );
     loadedPages = 0;
@@ -26,17 +27,6 @@ function afterLoad () {
     if( loadedPages == totalPages ) {
         ajaxForm( $( "#uploadForm" ), uploadComplete );
     }
-}
-
-function uploadComplete ( data, textStatus, errorThrown ) {
-    var uplaodResponse;
-    if( textStatus == "success" ) {
-        uploadResponse = data;
-    } else {
-        uploadResponse = textStatus + ": " + errorThrown;
-    }
-    $( "#uploadStatus" ).html( uploadResponse );
-    $( "#fileList" ).load( "/service/fileList.php" );
 }
 
 function ajaxForm ( form, responseHandler ) {
@@ -73,4 +63,9 @@ $( function() {
     loadAllPages();
     setupLinkListeners();
 });
+
+/* Placeholder functions. Called whenever the page is shown. */
+function homeUpdate() { }
+function configureUpdate() { }
+function runUpdate() { }
 
