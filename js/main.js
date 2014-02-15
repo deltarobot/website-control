@@ -30,6 +30,13 @@ function afterLoad ( loaded ) {
     window[ loaded + 'Update' ]();
     if( loadedPages == totalPages ) {
         $( "#uploadForm" ).ajaxForm( uploadComplete );
+        $( "#fileInput" ).on( "change", function ( event ) {
+            var fileSize = event.currentTarget.files[0].size / ( 1024 * 1024 );
+            if( fileSize > 1 ) {
+                $( "#uploadStatus" ).html( '<span class="error">File larger than 1MB, not uploaded.</span>' );
+                $( this ).val('');
+            }
+        });
     }
 }
 
