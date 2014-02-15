@@ -1,14 +1,38 @@
-function uploadUpdate() {
-    $( "#fileList tbody").load( "/service/fileList.php" );
+function uploadUpdate () {
+    $( "#fileList tbody").load( "/service/fileList.php", setupDeleteButtons );
+}
+
+function setupDeleteButtons () {
+    $( "#fileList tbody tr td input" ).click( function() {
+        var fileName = $( this ).attr( "file" );
+        var userConfirm = confirm( "Are you sure you want to delete " + fileName + "?" );
+        if( userConfirm ) {
+            $.ajax( {
+                url: '/service/delete.php',
+                type: 'DELETE',
+                data: 'file=' + fileName
+            }).always( function( data, textStatus, errorThrown ) {
+                if( textStatus != "success" ) {
+                    alert( "Error occurred while deleting: " + constructResponse( data, textStatus, errorThrown ) );
+                }
+                uploadUpdate();
+            });
+        }
+    });
 }
 
 function uploadComplete ( data, textStatus, errorThrown ) {
+    $( "#uploadStatus" ).html( constructResponse( data, textStatus, errorThrown ) );
+    uploadUpdate();
+}
+
+function constructResponse( data, textStatus, errorThrown ) {
     var uploadResponse;
     if( textStatus == "success" ) {
         uploadResponse = data;
     } else {
         uploadResponse = textStatus + ": " + errorThrown;
     }
-    $( "#uploadStatus" ).html( uploadResponse );
-    uploadUpdate();
+    return uploadResponse;
 }
+

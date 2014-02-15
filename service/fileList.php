@@ -10,6 +10,7 @@
             foreach( array_slice( $matches, 1 ) as $match ) {
                 echo '<td>' . $match . '</td>';
             }
+            echo '<td><input type="submit" value="" class="delete" file="' . $matches[3] . '"/></td>';
             echo '<\tr>';
         }
     }
