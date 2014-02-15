@@ -63,8 +63,17 @@ $( function() {
     setupLinkListeners();
 });
 
+function constructResponse( data, textStatus, errorThrown ) {
+    var uploadResponse;
+    if( textStatus == "success" ) {
+        uploadResponse = data;
+    } else {
+        uploadResponse = textStatus + ": " + errorThrown;
+    }
+    return uploadResponse;
+}
+
 /* Placeholder functions. Called whenever the page is shown. */
 function homeUpdate() { }
 function configureUpdate() { }
-function runUpdate() { }
 

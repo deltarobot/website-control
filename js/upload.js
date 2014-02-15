@@ -1,9 +1,9 @@
 function uploadUpdate () {
-    $( "#fileList tbody").load( "/service/fileList.php", setupDeleteButtons );
+    $( "#uploadFileList tbody").load( "/service/fileList.php?page=upload", setupDeleteButtons );
 }
 
 function setupDeleteButtons () {
-    $( "#fileList tbody tr td input" ).click( function() {
+    $( ".delete" ).click( function() {
         var fileName = $( this ).attr( "file" );
         var userConfirm = confirm( "Are you sure you want to delete " + fileName + "?" );
         if( userConfirm ) {
@@ -24,15 +24,5 @@ function setupDeleteButtons () {
 function uploadComplete ( data, textStatus, errorThrown ) {
     $( "#uploadStatus" ).html( constructResponse( data, textStatus, errorThrown ) );
     uploadUpdate();
-}
-
-function constructResponse( data, textStatus, errorThrown ) {
-    var uploadResponse;
-    if( textStatus == "success" ) {
-        uploadResponse = data;
-    } else {
-        uploadResponse = textStatus + ": " + errorThrown;
-    }
-    return uploadResponse;
 }
 
