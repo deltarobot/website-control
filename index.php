@@ -26,7 +26,8 @@
         <div id="run" class="invisible"></div>
     </div>
     <?php include 'html/footer.html' ?>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

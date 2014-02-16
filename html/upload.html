@@ -1,5 +1,27 @@
 <h1>Upload</h1>
 <div class="content">
-    <h2>Some sub-header</h2>
-    <p></p>
+    <h2>Upload New Files</h2>
+    <div class="content">
+        <p id="uploadStatus" class="centered"></p>
+        <form id="uploadForm" class="centered" enctype="multipart/form-data" action="/service/upload.php" method="post">
+            <input id="fileInput" name="gcode" type="file"/><br/>
+            <input type="submit" value="Upload"/>
+        </form>
+    </div>
+    <h2>Existing Files</h2>
+    <div class="content">
+        <table id="uploadFileList" class="fileList centered">
+            <thead>
+                <tr>
+                    <th>Last Modified Date</th>
+                    <th>Last Modified Time</th>
+                    <th>File Name</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
+<script src="js/upload.js"></script>
+
