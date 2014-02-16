@@ -1,5 +1,30 @@
 <h1>Run</h1>
 <div class="content">
+    <h2>Set User Home</h2>
+    <div class="content">
+        <p id="homeStatus" class="centered"></p>
+        <table class="fileList centered">
+            <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>Z</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input type="button" value="&uarr;" onclick="moveHead('X', 'up');"/></td>
+                <td><input type="button" value="&uarr;" onclick="moveHead('Y', 'up');"/></td>
+                <td><input type="button" value="&uarr;" onclick="moveHead('Z', 'up');"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="&darr;" onclick="moveHead('X', 'down');"/></td>
+                <td><input type="button" value="&darr;" onclick="moveHead('Y', 'down');"/></td>
+                <td><input type="button" value="&darr;" onclick="moveHead('Z', 'down');"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <h2>Available Input Files</h2>
     <div class="content">
         <table id="runFileList" class="fileList centered">

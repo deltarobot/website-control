@@ -1,5 +1,6 @@
 <?php
     require 'commonUtils.php';
+
     function sendError( $message ) {
         echo '<span class="error">' . $message . ', not uploaded.</span>';
         exit();
