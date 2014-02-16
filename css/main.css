@@ -99,6 +99,14 @@ td input {
     background: url( "/images/run.png" ) no-repeat;
 }
 
+.up {
+    background: url( "/images/upArrow.png" ) no-repeat;
+}
+
+.down {
+    background: url( "/images/downArrow.png" ) no-repeat;
+}
+
 .fileList {
     border-style: solid;
     border-width: 2px;
