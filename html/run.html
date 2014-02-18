@@ -1,33 +1,44 @@
 <h1>Run</h1>
 <div class="content">
-    <h2>Set User Home</h2>
+    <h2>Manual Movement</h2>
     <div class="content">
         <p id="homeStatus" class="centered"></p>
-        <table class="fileList centered">
-            <thead>
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>Z</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><input class="up" type="button" value="" onclick="moveHead('X', 'up');"/></td>
-                <td><input class="up" type="button" value="" onclick="moveHead('Y', 'up');"/></td>
-                <td><input class="up" type="button" value="" onclick="moveHead('Z', 'up');"/></td>
-            </tr>
-            <tr>
-                <td><input class="down" type="button" value="" onclick="moveHead('X', 'down');"/></td>
-                <td><input class="down" type="button" value="" onclick="moveHead('Y', 'down');"/></td>
-                <td><input class="down" type="button" value="" onclick="moveHead('Z', 'down');"/></td>
-            </tr>
-            </tbody>
+        <table class="centered">
+            <td>
+                <label for="movement">Movement size:</label><br/>
+                <input id="movement" class="centered" value="20" size="1"/> mm
+            </td>
+            <td>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>Z</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input class="moveUp" type="button" value="" onclick="moveHead('X', 'up');"/></td>
+                        <td><input class="moveUp" type="button" value="" onclick="moveHead('Y', 'up');"/></td>
+                        <td><input class="moveUp" type="button" value="" onclick="moveHead('Z', 'up');"/></td>
+                    </tr>
+                    <tr>
+                        <td><input class="moveDown" type="button" value="" onclick="moveHead('X', 'down');"/></td>
+                        <td><input class="moveDown" type="button" value="" onclick="moveHead('Y', 'down');"/></td>
+                        <td><input class="moveDown" type="button" value="" onclick="moveHead('Z', 'down');"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <input type="button" value="Set User Home" onclick="setUserHome();"/>
+            </td>
         </table>
     </div>
     <h2>Available Input Files</h2>
     <div class="content">
-        <table id="runFileList" class="fileList centered">
+        <table id="runFileList" class="centered">
             <thead>
             <tr>
                 <th>Last Modified Date</th>

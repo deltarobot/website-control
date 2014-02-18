@@ -21,15 +21,20 @@ function setupRunButtons () {
 }
 
 function moveHead ( axis, direction ) {
-    var movement;
-    if( direction == 'up' ) {
-        movement = 20;
-    } else if( direction == 'down' ) {
-        movement = -20
+    var movement = $( "#movement" ).val();
+    if( direction == 'down' ) {
+        movement = -movement;
     }
-    $( "#homeStatus" ).load(
+    $( "#homeStatus" ).load (
         "/service/run.php",
         {"axis": axis, "movement": movement}
+    );
+}
+
+function setUserHome () {
+    $( "#homeStatus" ).load (
+        "/service/run.php",
+        {"setUserHome": true}
     );
 }
 

@@ -84,7 +84,7 @@ h1, h2 {
     color: red;
 }
 
-td input {
+.delete, .run, .moveUp, .moveDown {
     width: 20px;
     height: 20px;
     -moz-border-radius: 5px;
@@ -99,22 +99,22 @@ td input {
     background: url( "/images/run.png" ) no-repeat;
 }
 
-.up {
+.moveUp {
     background: url( "/images/upArrow.png" ) no-repeat;
 }
 
-.down {
+.moveDown {
     background: url( "/images/downArrow.png" ) no-repeat;
 }
 
-.fileList {
+table {
     border-style: solid;
     border-width: 2px;
     border-color: black;
     border-spacing: 0px;
 }
 
-.fileList th, .fileList td {
+table th, table td {
     border-style: dotted;
     border-width: 1px;
     padding: 3px;
