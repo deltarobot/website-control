@@ -7,7 +7,7 @@
     }
 
     function writeToPipe( $command ) {
-        $handle = popen( getGcodePipePath(), 'w' );
+        $handle = fopen( getGcodePipePath(), 'w' );
         if( $handle == false ) {
             sendError( "Couldn't open the gcode pipe at " . getGcodePipePath() );
         }
@@ -15,7 +15,7 @@
         if( fwrite( $handle, $command . "\n" ) === false ) {
             sendError( 'Could not write to file' );
         }
-        pclose( $handle );
+        fclose( $handle );
 
         echo '<span class="success">Issued ' . $command . ' command.</span>';
     }
