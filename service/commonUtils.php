@@ -14,4 +14,8 @@
     function getGcodePipePath() {
         return osSpecific( '../uploads/gcode', '/home/cnc/gcode' );
     }
+
+    function getBootloadPath() {
+        return osSpecific( '../uploads/bootload', '/home/cnc/serial-data' );
+    }
 ?>

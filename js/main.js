@@ -29,6 +29,7 @@ function afterLoad ( loaded ) {
     loadedPages++;
     window[ loaded + 'Update' ]();
     if( loadedPages == totalPages ) {
+        $( "#firmwareForm" ).ajaxForm( firmwareUploadComplete );
         $( "#uploadForm" ).ajaxForm( uploadComplete );
         $( "#fileInput" ).on( "change", function ( event ) {
             var fileSize = event.currentTarget.files[0].size / ( 1024 * 1024 );
