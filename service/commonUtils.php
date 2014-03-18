@@ -18,4 +18,20 @@
     function getBootloadPath() {
         return osSpecific( '../uploads/bootload', '/home/cnc/serial-data' );
     }
+
+    function writeToPipe( $pipe, $data, $echoSuccess ) {
+        $handle = fopen( $pipe, 'w' );
+        if( $handle == false ) {
+            sendError( "Couldn't open the gcode pipe at " . $pipe );
+        }
+
+        if( fwrite( $handle, $data . "\n" ) === false ) {
+            sendError( 'Could not write to file' );
+        }
+        fclose( $handle );
+
+        if( $echoSuccess ) {
+            echo '<span class="success">Issued ' . $data . ' command.</span>';
+        }
+    }
 ?>

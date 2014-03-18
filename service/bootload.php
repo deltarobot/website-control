@@ -7,7 +7,7 @@
     }
 
     if( array_key_exists( 'restart', $_POST ) ) {
-        if( file_put_contents(  getBootloadPath(), "\xff" ) != false ) {
+        if( writeToPipe(  getBootloadPath(), "\xff", false ) != false ) {
             echo '<span class="success">Restarted the microcontroller</span>';
         } else {
             sendError( "Couldn't write data to " . getBootloadPath() );
@@ -26,7 +26,7 @@
             sendError( "Couldn't open the file at " . $file["tmp_name"] );
         }
 
-        if( file_put_contents(  getBootloadPath(), $contents ) != false ) {
+        if( writeToPipe(  getBootloadPath(), $contents, false ) != false ) {
             echo '<span class="success">' . $filename . ' is being flashed</span>';
         } else {
             sendError( "Couldn't write data to " . getBootloadPath() );
