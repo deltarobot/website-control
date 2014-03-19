@@ -22,7 +22,7 @@
     function writeToPipe( $pipe, $data, $echoSuccess ) {
         $handle = fopen( $pipe, 'w' );
         if( $handle == false ) {
-            sendError( "Couldn't open the gcode pipe at " . $pipe );
+            sendError( "Couldn't open the pipe at " . $pipe );
         }
 
         if( fwrite( $handle, $data . "\n" ) === false ) {
