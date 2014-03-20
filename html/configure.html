@@ -1,6 +1,17 @@
 <h1>Configure</h1>
 <div class="content">
-    <h2>Some sub-header</h2>
-    <p></p>
+    <h2>Restart Microcontroller</h2>
+    <div class="content centered">
+        <p id="restartStatus" class="centered"></p>
+        <input type="button" value="Restart" onclick="restartMicrocontroller();"/>
+    </div>
+    <h2>Bootload New Firmware</h2>
+    <div class="content">
+        <p id="firmwareUploadStatus" class="centered"></p>
+        <form id="firmwareForm" class="centered" enctype="multipart/form-data" action="/service/bootload.php" method="post">
+            <input id="fileInput" name="firmware" type="file"/><br/>
+            <input type="submit" value="Upload"/>
+        </form>
+    </div>
 </div>
-
+<script src="js/configure.js"></script>

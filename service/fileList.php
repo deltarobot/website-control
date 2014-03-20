@@ -1,13 +1,13 @@
 <?php
     require 'commonUtils.php';
 
-    $sourcePage = $_GET["page"];
-    if( strcmp( $sourcePage, "upload" ) == 0 ) {
-        $buttonClass = "delete";
-    } elseif( strcmp( $sourcePage, "run" ) == 0 ) {
-        $buttonClass = "run";
+    $sourcePage = $_GET['page'];
+    if( strcmp( $sourcePage, 'upload' ) == 0 ) {
+        $buttonClass = 'delete';
+    } elseif( strcmp( $sourcePage, 'run' ) == 0 ) {
+        $buttonClass = 'run';
     } else {
-        $buttonClass = "unknown";
+        $buttonClass = 'unknown';
     }
 
     $fileLs = shell_exec( 'ls -lt --time-style=long-iso ' . getUploadPath() );
