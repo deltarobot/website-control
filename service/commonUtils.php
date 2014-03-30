@@ -16,7 +16,7 @@
     }
 
     function getBootloadPath() {
-        return osSpecific( '../uploads/bootload', '/home/cnc/serial-data' );
+        return osSpecific( '../uploads/bootload', '/home/cnc/bootload' );
     }
 
     function writeToPipe( $pipe, $data, $echoSuccess ) {
