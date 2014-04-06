@@ -13,5 +13,18 @@
             <input type="submit" value="Upload"/>
         </form>
     </div>
+<h2>Motor Settings</h2>
+    <div class="content">
+         <form>
+            <label for="stepratio" name="settinglabel">step.ratio.mm=</label>
+            <input type="text" name="setting"><br>
+            <label for="accelmax" name="settinglabel">acceleration.max=</label>
+            <input type="text" name="setting"><br>
+            <label for="speedmax" name="settinglabel">speed.max=</label>
+            <input type="text" name="setting"><br>
+            <input type="button" onclick="updateSettings();"  value="Submit">
+            <div id="div1"></div>
+        </form>
+    </div>
 </div>
 <script src="js/configure.js"></script>
