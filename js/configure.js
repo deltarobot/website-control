@@ -10,26 +10,8 @@ function restartMicrocontroller () {
 }
 
 function updateSettings() {
-    var xmlhttp;
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    }
-    else if (window.ActiveXObject) {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    }
-    else {
-        throw new Error("Ajax is not supported by this browser");
-    }
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4) {
-            if (xmlhttp.status == 200 && xmlhttp.status < 300) {
-                document.getElementById('div1').innerHTML = xmlhttp.responseText;
-            }
-        }
-    }
-    var all_settings = document.getElementsByName('setting');
-    var all_labels = document.getElementsByName('settinglabel');
+    var all_settings = $("[name='setting']");
+    var all_labels = $("[name='settinglabel']");
     var full_settings = " ";
     for(var k=0;k<all_settings.length;k++)
     {
@@ -45,11 +27,15 @@ function updateSettings() {
             full_settings = full_settings.concat("   ");
         }
     }
-    xmlhttp.open('POST', '/service/config.php');
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    xmlhttp.send("dir=" + full_settings);
-    alert("Sent");
+    $.ajax({ url: '/service/config.php',
+            data: {dir: full_settings},
+            type: 'post',
+            success: function(){
+            alert("Configuration successfully updated.");
+            }
+        });
+
 }
 
 var current_settings;
@@ -57,38 +43,19 @@ var current_settings;
 window.onload = getSettings();
 function getSettings() {
 
-    var xmlhttp;
-    if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    }
-    else if (window.ActiveXObject) {
-        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    }
-    else {
-        throw new Error("Ajax is not supported by this browser");
-    }
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState === 4) {
-            if (xmlhttp.status == 200 && xmlhttp.status < 300) {
-
-                current_settings = xmlhttp.responseText;
-
-                populateFields();
+    $.ajax({ url: '/service/configUpload.php',
+            type: 'get',
+            success: function(settings){
+            current_settings = settings;
+            populateFields();
             }
-        }
-    }
-    xmlhttp.open('GET', '/service/configUpload.php');
-
-    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xmlhttp.send();
-
+      });
 }
 
 function populateFields()
 {
     var split_settings = current_settings.match(/\d*\.?\d+/g);
-    var inputs = document.getElementsByName('setting');
+    var inputs = $("[name='setting'");
     for( var i = 0; i < split_settings.length; i++)
     {
         inputs[i].value = split_settings[i];
