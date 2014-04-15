@@ -33,3 +33,10 @@ function setUserHome () {
     );
 }
 
+function homeMachine () {
+    $( "#homeStatus" ).load (
+        "/service/run.php",
+        {"homeMachine": true}
+    );
+}
+

@@ -19,6 +19,8 @@
         writeToPipe( getGcodePipePath(), 'G91' . $command, true );
     } elseif ( array_key_exists( 'setUserHome', $_POST ) ) {
         writeToPipe( getGcodePipePath(), 'G100', true );
+    } elseif ( array_key_exists( 'homeMachine', $_POST ) ) {
+        writeToPipe( getGcodePipePath(), 'G28', true );
     } elseif ( array_key_exists( 'file', $_POST ) ) {
         $file = $_POST['file'];
         $filePath = getUploadPath() . $file;
