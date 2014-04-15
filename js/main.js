@@ -38,6 +38,7 @@ function afterLoad ( loaded ) {
                 $( this ).val('');
             }
         });
+        getMachineSettings();
     }
 }
 
