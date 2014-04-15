@@ -11,7 +11,7 @@
         $settings = $_POST["settings"];
         $handle = fopen( $configPath, 'w' );
         if( $handle == false ) {
-            sendError( "Couldn't open the file at " . $pipe );
+            sendError( "Couldn't open the file at " . $configPath );
         }
         fwrite( $handle, $settings );
         fclose( $handle );
@@ -19,7 +19,7 @@
     } else {
         $handle = fopen( $configPath, 'r' );
         if( $handle == false ) {
-            sendError( "Couldn't open the file at " . $pipe );
+            sendError( "Couldn't open the file at " . $configPath );
         }
         echo file_get_contents( $configPath );
         fclose( $handle );
