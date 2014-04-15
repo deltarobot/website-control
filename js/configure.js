@@ -26,18 +26,15 @@ function updateSettings() {
 }
 
 function getMachineSettings() {
-    $.ajax({ url: '/service/configUpload.php',
-            type: 'get',
+    $.ajax({ url: '/service/config.php',
             success: function( settings ) {
-                populateFields( settings )
+                splitSettings = settings.split( '\n' );
+                $.each( splitSettings, function ( i ) {
+                    lineSplit = splitSettings[i].split( '=' );
+                    key = lineSplit[0].replace( /\./g, '\\.' );
+                    value = lineSplit[1];
+                    $( "#" + key ).val( value );
+                });
             }
-      });
-}
-
-function populateFields( settings ) {
-    var split_settings = settings.match(/\d*\.?\d+/g);
-    var inputs = $("[name='setting'");
-    for( var i = 0; i < split_settings.length; i++) {
-        inputs[i].value = split_settings[i];
-    }
+    });
 }

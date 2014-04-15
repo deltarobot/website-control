@@ -6,18 +6,23 @@
         exit();
     }
 
+    $configPath = getConfigPath();
     if( array_key_exists( 'settings', $_POST ) ) {
         $settings = $_POST["settings"];
-        $my_file = getConfigPath();
-        $handle = fopen( $my_file, 'w' );
+        $handle = fopen( $configPath, 'w' );
         if( $handle == false ) {
-            sendError( "Couldn't open the pipe at " . $pipe );
+            sendError( "Couldn't open the file at " . $pipe );
         }
         fwrite( $handle, $settings );
         fclose( $handle );
         echo '<span class="success">Settings updated.</span>';
     } else {
-        sendError( 'Did not recognize command' );
+        $handle = fopen( $configPath, 'r' );
+        if( $handle == false ) {
+            sendError( "Couldn't open the file at " . $pipe );
+        }
+        echo file_get_contents( $configPath );
+        fclose( $handle );
     }
 ?>
 
