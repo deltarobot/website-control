@@ -17,12 +17,12 @@
     <div class="content">
         <p id="machineSettingsStatus" class="centered"></p>
          <form>
-            <label for="stepratio" name="settinglabel">step.ratio.mm=</label>
-            <input type="text" name="setting"><br>
-            <label for="accelmax" name="settinglabel">acceleration.max=</label>
-            <input type="text" name="setting"><br>
-            <label for="speedmax" name="settinglabel">speed.max=</label>
-            <input type="text" name="setting"><br>
+            <label for="step.ratio.mm">Step ratio (steps/mm):</label>
+            <input type="text" id="step.ratio.mm" class="machineSetting"><br>
+            <label for="acceleration.max">Maximum acceleration (steps/sec/sec):</label>
+            <input type="text" id="acceleration.max" class="machineSetting"><br>
+            <label for="speed.max">Maximum speed (steps/sec):</label>
+            <input type="text" id="speed.max" class="machineSetting"><br>
             <input type="button" onclick="updateSettings();"  value="Submit">
             <div id="div1"></div>
         </form>

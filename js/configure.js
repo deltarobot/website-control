@@ -10,23 +10,18 @@ function restartMicrocontroller () {
 }
 
 function updateSettings() {
-    var all_settings = $( "[name='setting']" );
-    var all_labels = $( "[name='settinglabel']" );
-    var full_settings = '';
-    for( var k=0; k < all_settings.length; k++ ) {
-        var setting = all_settings[k];
-        var label = all_labels[k];
-
-        if( setting.type != 'text' ) continue;
-        if( setting.value != '' ) {
-            var dir = label.innerHTML.trim().concat( setting.value.trim() );
-            full_settings = full_settings.concat( dir ).concat( '\n' );
+    var allSettings = '';
+    $( ".machineSetting" ).each( function () {
+        var value = $( this ).val().trim();
+        if( value != '' ) {
+            var property = $( this ).attr( 'id' );
+            allSettings = allSettings + property + '=' + value + '\n';
         }
-    }
+    });
 
     $( "#machineSettingsStatus" ).load(
         '/service/config.php',
-        {settings: full_settings}
+        {settings: allSettings}
     )
 }
 
