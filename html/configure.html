@@ -13,5 +13,38 @@
             <input type="submit" value="Upload"/>
         </form>
     </div>
+    <h2>Machine Settings</h2>
+    <div class="content">
+        <p id="machineSettingsStatus" class="centered"></p>
+        <table class="centered">
+            <thead>
+            <tr>
+                <th>Propety</th>
+                <th>Value</th>
+                <th>Units</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><label for="step.ratio.mm" class="settingLabel">Step ratio: </label></td>
+                <td><input type="text" id="step.ratio.mm" class="machineSetting centered"/></td>
+                <td>steps/mm</td>
+            </tr>
+            <tr>
+                <td><label for="acceleration.max" class="settingLabel">Maximum acceleration:</label></td>
+                <td><input type="text" id="acceleration.max" class="machineSetting centered"/></td>
+                <td>steps/sec/sec</td>
+            </tr>
+            <tr>
+                <td><label for="speed.max" class="settingLabel">Maximum speed:</label></td>
+                <td><input type="text" id="speed.max" class="machineSetting centered"/></td>
+                <td>steps/sec</td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" onclick="updateSettings();" value="Submit"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script src="js/configure.js"></script>
