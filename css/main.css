@@ -84,6 +84,14 @@ h1, h2 {
     color: red;
 }
 
+.settingLabel {
+    float: right;
+}
+
+.machineSetting {
+    width: 75px;
+}
+
 .delete, .run, .moveUp, .moveDown {
     width: 20px;
     height: 20px;
