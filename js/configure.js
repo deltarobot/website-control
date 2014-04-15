@@ -33,12 +33,14 @@ function updateSettings() {
 function getMachineSettings() {
     $.ajax({ url: '/service/configUpload.php',
             type: 'get',
-            success: populateFields( settings )
+            success: function( settings ) {
+                populateFields( settings )
+            }
       });
 }
 
 function populateFields( settings ) {
-    var split_settings = current_settings.match(/\d*\.?\d+/g);
+    var split_settings = settings.match(/\d*\.?\d+/g);
     var inputs = $("[name='setting'");
     for( var i = 0; i < split_settings.length; i++) {
         inputs[i].value = split_settings[i];
