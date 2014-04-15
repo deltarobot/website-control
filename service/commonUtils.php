@@ -19,6 +19,10 @@
         return osSpecific( '../uploads/bootload', '/home/cnc/bootload' );
     }
 
+    function getConfigPath() {
+        return osSpecific( '../uploads/config.properties', '/home/cnc/config.properties' );
+    }
+
     function writeToPipe( $pipe, $data, $echoSuccess ) {
         $handle = fopen( $pipe, 'w' );
         if( $handle == false ) {

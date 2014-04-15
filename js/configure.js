@@ -4,9 +4,9 @@ function firmwareUploadComplete ( data, textStatus, errorThrown ) {
 
 function restartMicrocontroller () {
     $( "#restartStatus" ).load (
-            "/service/bootload.php",
-            {"restart": true}
-            );
+        '/service/bootload.php',
+        {restart: true}
+    );
 }
 
 function updateSettings() {
@@ -24,16 +24,10 @@ function updateSettings() {
         }
     }
 
-    alert( full_settings );
-
-    $.ajax({ url: '/service/config.php',
-            data: {dir: full_settings},
-            type: 'post',
-            success: function(){
-            alert( "Configuration successfully updated." );
-            }
-    });
-
+    $( "#machineSettingsStatus" ).load(
+        '/service/config.php',
+        {settings: full_settings}
+    )
 }
 
 function getMachineSettings() {

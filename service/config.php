@@ -1,11 +1,23 @@
 <?php
-    $dir = $_POST["dir"];
-    $my_file = '/home/cnc/g-code-interpreter/config.properties';
-    $pattern = '/(.*)\s{3,}/U';
-    preg_match_all( $pattern, $dir, $matches );
-    $handle = fopen( $my_file, 'w' ) or die( 'Cannot open file:  ' . $my_file );
-    foreach ( $matches[1] as $settings ) {
-        fwrite($handle, $settings."\n");
+    require 'commonUtils.php';
+
+    function sendError( $message ) {
+        echo '<span class="error">' . $message . ', settings not updated.</span>';
+        exit();
+    }
+
+    if( array_key_exists( 'settings', $_POST ) ) {
+        $settings = $_POST["settings"];
+        $my_file = getConfigPath();
+        $handle = fopen( $my_file, 'w' );
+        if( $handle == false ) {
+            sendError( "Couldn't open the pipe at " . $pipe );
+        }
+        fwrite( $handle, $settings );
+        fclose( $handle );
+        echo '<span class="success">Settings updated.</span>';
+    } else {
+        sendError( 'Did not recognize command' );
     }
 ?>
 
