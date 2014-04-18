@@ -15,6 +15,7 @@
         }
         fwrite( $handle, $settings );
         fclose( $handle );
+        exec( "~/bin/restartGCode" );
         echo '<span class="success">Settings updated.</span>';
     } else {
         $handle = fopen( $configPath, 'r' );
