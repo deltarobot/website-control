@@ -85,7 +85,7 @@ function loadResponse( id, url, data, callback, keepData ) {
                 callback();
             }
             if( !keepData ) {
-                setTimeout( function () { $( id ).empty(); }, 2500 );
+                setTimeout( function () { $( id + ' span' ).html( '&nbsp;' ); }, 2500 );
             }
         }
     );
