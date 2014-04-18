@@ -75,6 +75,20 @@ function constructResponse( data, textStatus, errorThrown ) {
     return uploadResponse;
 }
 
+function emergencyStop(){
+    $( "#systemStatus" ).load(
+        "/service/run.php",
+        {"emergencyStop": true}
+    );
+}
+
+function shutdown(){
+    $( "#systemStatus" ).load(
+        "/service/run.php",
+        {"shutdown": true}
+    );
+}
+
 /* Placeholder functions. Called whenever the page is shown. */
 function homeUpdate() { }
 function configureUpdate() { }

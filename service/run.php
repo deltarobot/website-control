@@ -30,6 +30,12 @@
         }
         writeToPipe( getGcodePipePath(), $contents, false );
         echo '<span class="success">Issued ' . $file . ' for execution.<span>';
+    } elseif ( array_key_exists( 'emergencyStop', $_POST ) ) {
+        exec( "emergencyStop" );
+        echo '<span class="success">Stopped the machine.<span>';
+    } elseif ( array_key_exists( 'shutdown', $_POST ) ) {
+        exec( "shutdown" );
+        echo '<span class="success">Shutting down.<span>';
     } else {
         sendError( 'Did not recognize command' );
     }

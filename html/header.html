@@ -1,6 +1,9 @@
 <div id="header" class="header">
+    <p id="systemStatus" class="centered"></p>
     <h1>CNC Interface</h1>
     <h2>Web-Based Controls</h2>
+    <button type="button" class="functionbutton left" onclick="emergencyStop();">Emergency Stop</button>
+    <button type="button" class="functionbutton right" onclick="shutdown();">Shutdown</button>
     <ul class="menu">
         <li><a id="foobar" class="smoothColor selectedMenu" page="home">Home</a></li>
         <li><a class="smoothColor" page="configure">Configure</a></li>
@@ -8,4 +11,3 @@
         <li><a class="smoothColor" page="run">Run</a></li>
     </ul>
 </div>
-
