@@ -86,10 +86,13 @@ function emergencyStop(){
 }
 
 function shutdown(){
-    $( "#systemStatus" ).load(
-        "/service/run.php",
-        {"shutdown": true}
-    );
+    var userConfirm = confirm( "Are you sure you want to shutdown?" );
+    if( userConfirm ) {
+        $( "#systemStatus" ).load(
+            "/service/run.php",
+            {"shutdown": true}
+        );
+    }
 }
 
 /* Placeholder functions. Called whenever the page is shown. */
