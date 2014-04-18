@@ -1,5 +1,5 @@
 function runUpdate () {
-    $( "#runFileList tbody").load( "/service/fileList.php?page=run", setupRunButtons );
+    loadResponse( '#runFileList tbody', '/service/fileList.php?page=run', null, setupRunButtons, true );
 }
 
 function setupRunButtons () {
@@ -7,10 +7,7 @@ function setupRunButtons () {
         var fileName = $( this ).attr( "file" );
         var userConfirm = confirm( "Are you sure you want to run " + fileName + "?" );
         if( userConfirm ) {
-            $( "#runStatus" ).load (
-                "/service/run.php",
-                {"file": fileName}
-            );
+            loadResponse( '#runStatus', '/service/run.php', {'file': fileName} );
         }
     });
 }
@@ -20,23 +17,14 @@ function moveHead ( axis, direction ) {
     if( direction == 'down' ) {
         movement = -movement;
     }
-    $( "#homeStatus" ).load (
-        "/service/run.php",
-        {"axis": axis, "movement": movement}
-    );
+    loadResponse( '#homeStatus', '/service/run.php', {'axis': axis, 'movement': movement} );
 }
 
 function setUserHome () {
-    $( "#homeStatus" ).load (
-        "/service/run.php",
-        {"setUserHome": true}
-    );
+    loadResponse( '#homeStatus', '/service/run.php', {'setUserHome': true} );
 }
 
 function homeMachine () {
-    $( "#homeStatus" ).load (
-        "/service/run.php",
-        {"homeMachine": true}
-    );
+    loadResponse( '#homeStatus', '/service/run.php', {'homeMachine': true} );
 }
 

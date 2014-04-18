@@ -1,5 +1,5 @@
 function uploadUpdate () {
-    $( "#uploadFileList tbody").load( "/service/fileList.php?page=upload", setupDeleteButtons );
+    loadResponse( '#uploadFileList tbody', '/service/fileList.php?page=upload', null, setupDeleteButtons, true );
 }
 
 function setupDeleteButtons () {

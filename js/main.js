@@ -78,24 +78,31 @@ function constructResponse( data, textStatus, errorThrown ) {
     return uploadResponse;
 }
 
-function emergencyStop(){
-    $( "#systemStatus" ).load(
-        "/service/run.php",
-        {"emergencyStop": true}
+function loadResponse( id, url, data, callback, keepData ) {
+    $( id ).load( url, data,
+        function () {
+            if( callback ) {
+                callback();
+            }
+            if( !keepData ) {
+                setTimeout( function () { $( id + ' span' ).html( '&nbsp;' ); }, 2500 );
+            }
+        }
     );
+
+}
+
+function emergencyStop(){
+    loadResponse( '#systemStatus', '/service/run.php', {'emergencyStop': true} );
 }
 
 function shutdown(){
     var userConfirm = confirm( "Are you sure you want to shutdown?" );
     if( userConfirm ) {
-        $( "#systemStatus" ).load(
-            "/service/run.php",
-            {"shutdown": true}
-        );
+        loadResponse( '#systemStatus', 'service/run.php', {'shutdown': true} );
     }
 }
 
 /* Placeholder functions. Called whenever the page is shown. */
 function homeUpdate() { }
-function configureUpdate() { }
 

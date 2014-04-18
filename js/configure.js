@@ -1,12 +1,13 @@
+function configureUpdate() {
+    getMachineSettings();   
+}
+
 function firmwareUploadComplete ( data, textStatus, errorThrown ) {
     $( "#firmwareUploadStatus" ).html( constructResponse( data, textStatus, errorThrown ) );
 }
 
 function restartMicrocontroller () {
-    $( "#restartStatus" ).load (
-        '/service/bootload.php',
-        {restart: true}
-    );
+    loadResponse( '#restartStatus', '/service/bootload.php', {restart: true} );
 }
 
 function updateSettings() {
@@ -19,10 +20,7 @@ function updateSettings() {
         }
     });
 
-    $( "#machineSettingsStatus" ).load(
-        '/service/config.php',
-        {settings: allSettings}
-    )
+    loadResponse( '#machineSettingsStatus', '/service/config.php', {settings: allSettings} );
 }
 
 function getMachineSettings() {
