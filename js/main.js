@@ -105,5 +105,4 @@ function shutdown(){
 
 /* Placeholder functions. Called whenever the page is shown. */
 function homeUpdate() { }
-function configureUpdate() { }
 
