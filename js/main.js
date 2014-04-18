@@ -43,18 +43,21 @@ function afterLoad ( loaded ) {
 }
 
 function setupLinkListeners () {
-    $( "#header ul li a" ).click( function() {
+    $( "#emergencyStop" ).click( emergencyStop );
+    $( "#shutdown" ).click( shutdown );
+
+    $( "#mainMenu li a" ).click( function() {
         showDiv( $( this ).attr( "page" ) );
-        $( "#header ul li a" ).removeClass( "selectedMenu colorFlash" );
+        $( "#mainMenu li a" ).removeClass( "selectedMenu colorFlash" );
         $( this ).addClass( "colorFlash selectedMenu" );
     });
 
-    $( "#header ul li a" ).hover( function() {
+    $( "#mainMenu li a" ).hover( function() {
         transition( peakPage, currentPage );
         peakPage = $( this ).attr( "page" );
         transition( currentPage, peakPage );
     }, function() {});
-    $( "#header ul" ).hover( function() {}, function() {
+    $( "#mainMenu li" ).hover( function() {}, function() {
         transition( peakPage, currentPage );
     });
 }

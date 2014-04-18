@@ -22,7 +22,6 @@ h1, h2 {
 }
 
 .left{
-    background-color: red;
     right:250px;
 }
 
@@ -57,10 +56,14 @@ h1, h2 {
     padding: 10px;
 }
 
+.extraSpace {
+    margin: 0 0 20px 0;
+}
+
 .menu {
+    margin: 0;
     display: table;
     width: 100%;
-    margin: 20px 0 0 0;
     padding: 0;
 }
 
