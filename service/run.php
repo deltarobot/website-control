@@ -9,7 +9,7 @@
     if( array_key_exists( 'axis', $_POST ) && array_key_exists( 'movement', $_POST ) ) {
         $axis = $_POST['axis'];
         $movement = $_POST['movement'];
-        if( !in_array( $axis, array( 'X', 'Y', 'Z' ) ) ) {
+        if( !in_array( $axis, array( 'X', 'Y', 'Z', 'A' ) ) ) {
             sendError( 'Unknown axis, ' . $axis );
         }
         if( !is_numeric( $movement ) ) {
