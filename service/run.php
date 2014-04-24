@@ -48,9 +48,11 @@
         echo '<span class="success">Issued ' . $file . ' for execution.<span>';
     } elseif ( array_key_exists( 'emergencyStop', $_POST ) ) {
         exec( "~/bin/emergencyStop > /dev/null &" );
+        writeToLcd( ' Emergency Stop~     (O_o)' . $shortFileName );
         echo '<span class="success">Stopped the machine.<span>';
     } elseif ( array_key_exists( 'shutdown', $_POST ) ) {
         exec( "~/bin/shutdown > /dev/null &" );
+        writeToLcd( '    Good-bye~ (-.-) ZZZzzz...' . $shortFileName );
         echo '<span class="success">Shutting down.<span>';
     } else {
         sendError( 'Did not recognize command' );
