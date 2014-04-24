@@ -7,8 +7,13 @@
     }
 
     if( array_key_exists( 'restart', $_POST ) ) {
-        writeToPipe( getBootloadPath(), "q", false );
-        echo '<span class="success">Restarted the microcontroller</span>';
+        $file = getBootloadImagePath();
+        $contents = file_get_contents( $file );
+        if( $contents == false ) {
+            sendError( "Couldn't load the bootload image at " . $file );
+        }
+        writeToPipe( getBootloadPath(), $contents, false );
+        echo '<span class="success">Reflashing the microcontroller</span>';
     } else if( array_key_exists( 'firmware', $_FILES ) ) {
         $file = $_FILES['firmware'];
         $filename = basename( $file['name'] );
