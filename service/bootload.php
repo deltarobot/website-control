@@ -22,7 +22,8 @@
             sendError( "Couldn't open the file at " . $file["tmp_name"] );
         }
 
-        writeToPipe(  getBootloadPath(), $contents, false );
+        writeToPipe( getBootloadPath(), $contents, false );
+        file_put_contents( getBootloadImagePath(), $contents );
         echo '<span class="success">' . $filename . ' is being flashed</span>';
     } else {
         sendError( 'Did not recognize command' );
