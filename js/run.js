@@ -28,3 +28,6 @@ function homeMachine () {
     loadResponse( '#homeStatus', '/service/run.php', {'homeMachine': true} );
 }
 
+function sendRawGcode () {
+    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': $( '#rawGcode' ).val().trim()} );
+}

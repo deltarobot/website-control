@@ -39,6 +39,11 @@
                 <input type="button" value="Home Machine" onclick="homeMachine();"/>
             </td>
         </table>
+        <p id="rawGcodeStatus" class="centered"><span class="success">&nbsp;</span></p>
+        <p class="centered">
+            <input type="text" id="rawGcode" class="centered"/>
+            <input type="button" value="Send Raw G-code" class="centered" onclick="sendRawGcode();"/>
+        </p>
     </div>
     <h2>Available Input Files</h2>
     <div class="content">
