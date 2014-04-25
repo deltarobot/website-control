@@ -13,6 +13,18 @@ var hand = true;
 
 var controller = new Leap.Controller();
 
+function setLeapToZero() {
+    macX = 0;
+    macY = 0;
+    macZ = 0;
+}
+
+function moveToZero() {
+    curX = 0;
+    curY = 0;
+    curZ = 0;
+}
+
 function abs( i ) {
     if( i >= 0 )
         return  i;
@@ -82,9 +94,7 @@ this.controller.on( 'connect', function() {
                 if( hand ) {
                     hand = false;
                     $.post( '/service/run.php', {'rawGcode': 'M05\nC101|Waiting for user'} );
-                    curX = 0;
-                    curY = 0;
-                    curZ = 0;
+                    moveToZero();
                 }
 
                 if( macX || macY || macZ ) {
