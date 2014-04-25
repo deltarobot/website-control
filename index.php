@@ -25,10 +25,13 @@
         <div id="upload" class="invisible"></div>
         <div id="run" class="invisible"></div>
     </div>
+</body>
     <?php include 'html/footer.html' ?>
+    <script src="//js.leapmotion.com/leap-0.4.3.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/leap.js"></script>
 </body>
 </html>
 
