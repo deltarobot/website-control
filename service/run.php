@@ -48,6 +48,7 @@
         echo '<span class="success">Issued ' . $file . ' for execution.<span>';
     } elseif ( array_key_exists( 'emergencyStop', $_POST ) ) {
         exec( "~/bin/emergencyStop > /dev/null &" );
+        sleep( 1 );
         writeToLcd( ' Emergency Stop~     (O_o)' . $shortFileName );
         echo '<span class="success">Stopped the machine.<span>';
     } elseif ( array_key_exists( 'shutdown', $_POST ) ) {
