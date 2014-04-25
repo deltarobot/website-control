@@ -24,7 +24,7 @@
         writeToPipe( getGcodePipePath(), 'G91' . $command, true );
     } elseif ( array_key_exists( 'rawGcode', $_POST ) ) {
         $gCode = $_POST['rawGcode'] . "\n";
-        writeToPipe( getGcodePipePath(), $gCode, false );
+        writeToPipe( getGcodePipePath(), $gCode, true );
     } elseif ( array_key_exists( 'setUserHome', $_POST ) ) {
         writeToPipe( getGcodePipePath(), 'G100', true );
     } elseif ( array_key_exists( 'homeMachine', $_POST ) ) {
