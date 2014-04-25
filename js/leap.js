@@ -27,7 +27,7 @@ function sign( i ) {
         return -1;
 }
 
-function moveHead() {
+function moveHeadByLeap() {
     deltaX = curX - macX;
     if( abs( deltaX ) > 5 ){
         hasMoved++;
@@ -46,7 +46,7 @@ function moveHead() {
 
     if( hasMoved ){
         hasMoved = 0;
-        loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'G90X'.concat(parseInt((macX))).concat('Y').concat(parseInt((macY))).concat('Z').concat(parseInt((macZ)))} );
+        $.post( '/service/run.php', {'rawGcode': 'G90X'.concat( parseInt( ( macX ) ) ).concat( 'Y' ).concat( parseInt( ( macY ) ) ).concat( 'Z' ).concat( parseInt( ( macZ ) ) )} );
     }
 }
 
@@ -57,8 +57,7 @@ this.controller.on( 'connect', function() {
                 // only run this at state change...
                 if( !hand ) {
                     hand = true;
-                    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'M03'} );
-                    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'G101|  Leap Control'} );
+                    $.post( '/service/run.php', {'rawGcode': 'M03\nG101|  Leap Control'} );
                 }
                 curY = -parseInt(obj.hands[0].palmPosition[0]/2);
                 curZ = parseInt((obj.hands[0].palmPosition[1]-200)/5);
@@ -78,58 +77,18 @@ this.controller.on( 'connect', function() {
                 if( curZ < 0 )
                     curZ = 0;
 
-                deltaX = curX - macX;
-                if( abs( deltaX ) > 5 ) {
-                    hasMoved++;
-                    macX = macX + (sign(deltaX));
-                }
-                deltaY = curY - macY;
-                if( abs( deltaY ) > 5 ) {
-                    hasMoved++;
-                    macY = macY + (sign(deltaY));
-                }
-                deltaZ = curZ - macZ;
-                if( abs( deltaZ ) > 5 ) {
-                    hasMoved++;
-                    macZ = macZ + (sign(deltaZ));
-                }
-
-                if( hasMoved ) {
-                    hasMoved = 0;
-                    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'G90X'.concat(parseInt((macX))).concat('Y').concat(parseInt((macY))).concat('Z').concat(parseInt((macZ)))} );
-                }
+                moveHeadByLeap();
             } else {
                 if( hand ) {
                     hand = false;
-                    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'M05'} );
-                    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'G101|Waiting for user'} );
+                    $.post( '/service/run.php', {'rawGcode': 'M05\nC101|Waiting for user'} );
                     curX = 0;
                     curY = 0;
                     curZ = 0;
                 }
 
                 if( macX || macY || macZ ) {
-
-                    deltaX = curX - macX;
-                    if( abs( deltaX ) > 5 ){
-                        hasMoved++;
-                        macX = macX + (sign(deltaX));
-                    }
-                    deltaY = curY - macY;
-                    if( abs( deltaY ) > 5 ){
-                        hasMoved++;
-                        macY = macY + (sign(deltaY));
-                    }
-                    deltaZ = curZ - macZ;
-                    if( abs( deltaZ ) > 5 ){
-                        hasMoved++;
-                        macZ = macZ + (sign(deltaZ));
-                    }
-
-                    if( hasMoved ){
-                        hasMoved = 0;
-                        loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': 'G90X'.concat(parseInt((macX))).concat('Y').concat(parseInt((macY))).concat('Z').concat(parseInt((macZ)))} );
-                    }
+                    moveHeadByLeap();
                 }
             }
         }, 100);
