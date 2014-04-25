@@ -53,7 +53,7 @@ function moveHeadByLeap() {
 this.controller.on( 'connect', function() {
         setInterval( function() {
             var obj = controller.frame();
-            if( obj.hands.length > 0 ) {
+            if( obj.hands.length > 0 && $( '#leapCheck' ).is( ':checked' ) ) {
                 // only run this at state change...
                 if( !hand ) {
                     hand = true;
