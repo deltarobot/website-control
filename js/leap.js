@@ -42,18 +42,31 @@ function sign( i ) {
 function moveHeadByLeap() {
     deltaX = curX - macX;
     if( abs( deltaX ) > 5 ){
-        hasMoved++;
+        hasMoved |= 1;
         macX = macX + (sign(deltaX));
     }
     deltaY = curY - macY;
     if( abs( deltaY ) > 5 ){
-        hasMoved++;
+        hasMoved |= 2;
         macY = macY + (sign(deltaY));
     }
     deltaZ = curZ - macZ;
     if( abs( deltaZ ) > 5 ){
-        hasMoved++;
+        hasMoved |= 4;
         macZ = macZ + (sign(deltaZ));
+    }
+
+    if( !( hasMoved & 1 ) && deltaX && curX == 0 ) {
+        hasMoved |= 1;
+        macX = 0;
+    }
+    if( !( hasMoved & 2 ) && deltaY && curY == 0 ) {
+        hasMoved |= 2;
+        macY = 0;
+    }
+    if( !( hasMoved & 4 ) && deltaZ && curZ == 0 ) {
+        hasMoved |= 4;
+        macZ = 0;
     }
 
     if( hasMoved ){
