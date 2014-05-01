@@ -21,10 +21,17 @@ function moveHead ( axis, direction ) {
 }
 
 function setUserHome () {
+    setLeapToZero();
+    moveToZero();
     loadResponse( '#homeStatus', '/service/run.php', {'setUserHome': true} );
 }
 
 function homeMachine () {
+    setLeapToZero();
+    moveToZero();
     loadResponse( '#homeStatus', '/service/run.php', {'homeMachine': true} );
 }
 
+function sendRawGcode () {
+    loadResponse( '#rawGcodeStatus', '/service/run.php', {'rawGcode': $( '#rawGcode' ).val().trim()} );
+}

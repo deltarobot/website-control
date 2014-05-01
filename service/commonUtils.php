@@ -19,6 +19,10 @@
         return osSpecific( '../uploads/bootload', '/home/cnc/bootload' );
     }
 
+    function getBootloadImagePath() {
+        return osSpecific( '../uploads/bootload-image', '/home/cnc/bootload-image' );
+    }
+
     function getConfigPath() {
         return osSpecific( '../uploads/config.properties', '/home/cnc/config.properties' );
     }
