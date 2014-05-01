@@ -38,29 +38,33 @@ function abs( i ) {
     else
         return -i;
 }
-// wish i had math...
+
 function scale( i ) {
+    // 28v, 350000acc, 16000sps, 4xMS
+    // I've massaged these numbers a lot, handle with care.
     j = 0;
-    t = 0;
+    t = 100;
     if( i > 0 ){
-        j = 0;
-        t = 110;
+        j = 1;
+        t = 70;
     }
     if( i > 4 ){
         j = 2;
-        t = 170;
+        t = 120;
     }
+
     if( i > 9 ){
         j = 3;
-        t = 230;
+        t = 170;
     }
+
     if( i > 16 ){
         j = 4;
-        t = 290;
+        t = 220;
     }
     if( i > 25 ){
         j = 5;
-        t = 350;
+        t = 270;
     }
     if( timeout < t )
         timeout = t;
@@ -87,7 +91,7 @@ function checkBounds() {
     if( macZ > 55 )
         macZ = 55;
     if( macZ < 0 )
-        macZ = 0;  
+        macZ = 0;
 }
 
 function moveHeadByLeap() {
@@ -119,26 +123,29 @@ function moveHeadByLeap() {
 
 function processCommand() {
     var obj = controller.frame();
+
+    // Handled outside of main checkbox.
     if( obj.gestures.length > 0 ){
         var gesture = obj.gestures[0];
         if( gesture.type == "circle" && gesture.progress >= 2 ){
             if( gesture.normal[2]<=0){
-                $.post( '/service/run.php', {'rawGcode': 'M03'} );
+                $.post( '/service/run.php', {'rawGcode': 'M03\nG101|  Spindle On!~    (>\'_\')>'} );
             } else {
-                $.post( '/service/run.php', {'rawGcode': 'M05'} );
+                $.post( '/service/run.php', {'rawGcode': 'M05\nG101|  Spindle Off!~    <(\'_\'<)'} );
              }
         }
-        //else if( gesture.type == "keyTap" )
-        //    $.post( '/service/run.php', {'rawGcode': 'Z0\nG91X2Y2\nG91Z2X-2\nG90Z0\nG91X2Y-2\nG91X-2\n'} );
+//        if( gesture.type == "swipe" )
+  //          $.post( '/service/run.php', {'rawGcode': 'M03\nG28\nG101|Homing'} );
+
     }
-    
+
+    // Dependant upon main checkbox.
     if( obj.hands.length > 0 && $( '#leapCheck' ).is( ':checked' ) ) {
-        // only run this at state change...
         if( !hand ) {
             hand = 1;
             spindleState = 1;
-            $.post( '/service/run.php', {'rawGcode': 'G101|  Leap Control'} );
-        }
+            $.post( '/service/run.php', {'rawGcode': 'G101|  Leap Control~    ( @_@ )'} );
+       }
 
         curY = -parseInt(obj.hands[0].palmPosition[0]/2);
         curZ = parseInt((obj.hands[0].palmPosition[1]-200)/5);
@@ -148,7 +155,7 @@ function processCommand() {
         if( hand ) {
             hand = 0;
             spindleState = 0;
-            $.post( '/service/run.php', {'rawGcode': 'M05\nC101|Waiting for user'} );
+            $.post( '/service/run.php', {'rawGcode': 'M05\nG101|Waiting on user~    ( =_= )'} );
             moveToLeapHome();
         }
 
